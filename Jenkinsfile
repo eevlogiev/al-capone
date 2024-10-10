@@ -17,13 +17,15 @@ pipeline {
         // }
 
         stage ("Build Docker image") {
-        steps {
-            sh '''
-            docker build -t ${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_REGION}.amazonaws.com/${REPO_NAME}:${IMAGE_TAG} .
-            '''
+            when { changeset "app/*"}
+            steps {
+                sh '''
+                docker build -t ${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_REGION}.amazonaws.com/${REPO_NAME}:${IMAGE_TAG} .
+                '''
         }
     }
         stage('Login to AWS ECR') {
+            when { changeset "app/*"}
             steps {
                 sh '''
                 aws ecr get-login-password --region ${AWS_REGION} | docker login --username AWS --password-stdin ${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_REGION}.amazonaws.com
@@ -31,6 +33,7 @@ pipeline {
             }
         }
         stage ("Push image to ECR") {
+            when { changeset "app/*"}
             steps {
                 sh '''
                 docker push ${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_REGION}.amazonaws.com/${REPO_NAME}:${IMAGE_TAG}
@@ -38,6 +41,7 @@ pipeline {
              }
         }
         stage ("Deploy to ECS") {
+            when { changeset "app/*"}
             steps {
                 sh '''
                 aws ecs update-service --cluster ${CLUSTER_NAME} --service ${SERVICE_NAME} --force-new-deployment \
