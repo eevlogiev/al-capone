@@ -5,7 +5,7 @@
 The AI Capone Web App is a simple application designed to handle HTTP/HTTPS requests on the /api/ping endpoint. It responds with a "pong" message along with the hostname of the server node that processed the request. The app is containerized using Docker, deployed to Amazon Elastic Container Service (ECS) using Terraform, and integrated with Jenkins for CI/CD automation.
 
 <div align="center">
-<img src="docs/diagram.png" alt="Project Diagram" width="1625" height="700">
+<img src="docs/diagram.png" alt="Project Diagram">
 </div>
 
 ## Features
