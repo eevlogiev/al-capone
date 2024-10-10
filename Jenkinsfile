@@ -10,11 +10,11 @@ pipeline {
         SERVICE_NAME = "al-capone-service"
     }
     stages {
-        stage('Checkout') {
-            steps {
-                git branch: 'main', url: 'https://github.com/eevlogiev/al-capone.git'
-            }
-        }
+        // stage('Checkout') {
+        //     steps {
+        //         git branch: 'main', url: 'https://github.com/eevlogiev/al-capone.git'
+        //     }
+        // }
 
         stage ("Build Docker image") {
         steps {
