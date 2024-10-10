@@ -29,7 +29,7 @@ resource "aws_alb_listener" "front_end" {
   protocol          = "HTTPS"
   ssl_policy        = "ELBSecurityPolicy-TLS13-1-2-2021-06"
   certificate_arn   = aws_acm_certificate.web_app_cert.arn
-
+  depends_on        = [aws_acm_certificate_validation.cert_validation]
   default_action {
     target_group_arn = aws_alb_target_group.app.id
     type             = "forward"
