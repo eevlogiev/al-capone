@@ -22,6 +22,6 @@ def ping():
     # Return the response as JSON
     return jsonify(response)
 
-# Start the Flask app on port 500
+# Start the Flask app on port 5000
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000)
