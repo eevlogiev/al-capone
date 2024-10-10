@@ -87,7 +87,7 @@ Terraform creates all the necessary underlying infrastructure including VPC, ECR
    ```
 
 ### CI/CD Pipeline
-The CI/CD Pipeline automates the process of building, testing, and deploying the Al Capone web app to AWS ECS. The pipeline is triggered automatically when new code is pushed to the GitHub repository. Pipeline is described in the Jenkinsfile
+The CI/CD Pipeline automates the process of building, testing, and deploying the Al Capone web app to AWS ECS. The pipeline is triggered automatically when new code is pushed to the GitHub repository. Pipeline is described in the Jenkinsfile. In this particulare case we are using Jenkins installed on EC2 instance with proper IAM role assigned to it.
 
 **Pipeline Steps:**
 1. Build Docker Image: Jenkins builds the Docker image from the latest code.
