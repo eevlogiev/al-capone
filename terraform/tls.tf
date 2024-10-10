@@ -1,8 +1,3 @@
-# data "aws_route53_zone" "main" {
-#   name         = var.domain_name
-#   private_zone = false
-# }
-
 resource "aws_acm_certificate" "web_app_cert" {
   domain_name       = var.domain_name
   validation_method = "DNS"
@@ -24,7 +19,6 @@ resource "aws_route53_record" "cert_dns" {
   type            = each.value.type
   zone_id         = aws_route53_zone.main.zone_id
 }
-
 
 
 resource "aws_acm_certificate_validation" "cert_validation" {
